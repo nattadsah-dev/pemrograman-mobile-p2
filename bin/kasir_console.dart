@@ -31,6 +31,29 @@ void main() {
     item.add((kode: kode, jumlah: jumlah));
   }
 
-  print('Valid    : $item');
-  print('Diabaikan: $diabaikan');
+  final baris = item.map((e) {
+    final produk = katalog[e.kode]!;
+    return (
+      nama: produk.nama,
+      jumlah: e.jumlah,
+      subtotal: produk.harga * e.jumlah,
+      kategori: produk.kategori,
+    );
+  }).toList();
+
+  final total = baris.fold<int>(0, (akumulator, b) => akumulator + b.subtotal);
+
+  final diskon = total >= 100000 ? total ~/ 10 : 0;
+
+  final kategori = baris.map((b) => b.kategori).toSet();
+
+  print('Pesanan: $input\n');
+  for (final b in baris) {
+    print('${b.nama.padRight(24)} ${b.jumlah} x ${b.subtotal.toString().padLeft(8)}');
+  }
+  print('${'Total'.padRight(28)} ${total.toString().padLeft(8)}');
+  print('${'Diskon 10%'.padRight(28)} ${diskon.toString().padLeft(8)}');
+  print('${'Bayar'.padRight(28)} ${(total - diskon).toString().padLeft(8)}');
+  print('Kategori : ${kategori.join(', ')}');
+  if (diabaikan.isNotEmpty) print('Diabaikan: ${diabaikan.join(', ')}');
 }
