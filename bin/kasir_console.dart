@@ -8,7 +8,7 @@ final katalog = <String, ({String nama, int harga, String kategori})>{
 };
 
 void main() {
-  const input = 'P01x2, P02x1, P09x3';
+  const input = 'P01x1, P02x3, P03x2';
 
   final item = <({String kode, int jumlah})>[];
   final diabaikan = <String>[];
