@@ -1,7 +1,10 @@
 final katalog = <String, ({String nama, int harga, String kategori})>{
-  'P01': (nama: 'Kopi Sidikalang 250 g', harga: 45000, kategori: 'Minuman'),
-  'P02': (nama: 'Bolu Meranti', harga: 80000, kategori: 'Kue'),
-  'P03': (nama: 'Amanda', harga: 80000, kategori:'Kue')
+  'P01': (nama: 'Bika Ambon', harga: 50000, kategori: 'Kue'),
+  'P02': (nama: 'Amanda', harga: 50000, kategori: 'Kue'),
+  'P03': (nama: 'Teri Medan', harga: 40000, kategori: 'Ikan Asin'),
+  'P04': (nama: 'Ikan Sale', harga: 45000, kategori: 'Ikan Asin'),
+  'P05': (nama: 'Lemang', harga: 30000, kategori: 'Makanan'),
+  'P06': (nama: 'Lapis Legit', harga: 120000, kategori: 'Kue'),
 };
 
 void main() {
