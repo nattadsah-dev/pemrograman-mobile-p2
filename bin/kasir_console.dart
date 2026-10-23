@@ -5,7 +5,32 @@ final katalog = <String, ({String nama, int harga, String kategori})>{
 };
 
 void main() {
-  katalog.forEach((kode, produk) {
-    print('$kode  ${produk.nama.padRight(24)} ${produk.harga}');
-  });
+  const input = 'P01x2, P02x1, P09x3';
+
+  final item = <({String kode, int jumlah})>[];
+  final diabaikan = <String>[];
+
+  for (final bagian in input.split(',')) {
+    final teks = bagian.trim();
+    final pecah = teks.split('x');
+
+    if (pecah.length != 2) {
+      diabaikan.add(teks);
+      continue;
+    }
+
+    final kode = pecah[0].trim().toUpperCase();
+    final jumlah = int.tryParse(pecah[1].trim());
+    final produk = katalog[kode];
+
+    if (produk == null || jumlah == null || jumlah <= 0) {
+      diabaikan.add(teks);
+      continue;
+    }
+
+    item.add((kode: kode, jumlah: jumlah));
+  }
+
+  print('Valid    : $item');
+  print('Diabaikan: $diabaikan');
 }
